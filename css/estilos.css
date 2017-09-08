@@ -1,0 +1,93 @@
+body {
+    height: 100vh;
+}
+
+.container-fluid {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.separa {
+    width: 100%;
+    height: 25px;
+}
+
+
+/* H E A D E R */
+
+#cabecera {
+    background-color: #342A21;
+}
+
+#titulo {
+    font-size: 60px;
+    letter-spacing: 5px;
+    text-align: center;
+    color: #A0906F;
+}
+
+#tomatoImg {
+    width: 50px;
+    height: 50px;
+    margin-top: -10px;
+}
+
+
+/* C U E R P O   D E  L A  P A G I N A */
+
+#principal {
+    height: 600px;
+    background: url(../img/fondoReloj.jpg) no-repeat center fixed;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+}
+
+.fondoCrono {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 600px;
+    background-color: rgba(160, 144, 111, 0.65);
+    /* #FCE2C7 */
+}
+
+#crono {
+    display: flex;
+}
+
+.contador {
+    font-size: 100px;
+    font-weight: bold;
+    text-shadow: 0px 0px 1px #FCE2C7;
+}
+
+#dosPuntosContador {
+    margin-top: -10px;
+    margin-left: 12px;
+    margin-right: 12px;
+}
+
+.divBtnCss {
+    display: flex;
+    flex-direction: row;
+}
+
+.btnCss {
+    padding: 10px;
+    width: 80px;
+    height: 50px;
+    color: #FCE2C7;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+    margin-right: 10px;
+    background-color: #342A21;
+    box-shadow: 0px 0px 5px #3C3837;
+}
+
+.btnCss:hover {
+    box-shadow: 0px 0px 10px #342A21;
+}

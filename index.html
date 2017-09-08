@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/estilos.css">
+    <title>Pomodoro Timer</title>
+    <link rel="icon" href="img/favicon.png" type="image/png" sizes="16x16">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body onload="iniciar()">
+    <div class="container-fluid">
+        <div id="cabecera" class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="separa"></div>
+                <h1 id="titulo">POMODORO <span><img id="tomatoImg" src="img/favicon.png" alt="pomodoro"></span> TIMER</h1>
+                <div class="separa"></div>
+            </div>
+        </div>
+        <div id="principal" class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 fondoCrono">
+                <div class="separa"></div>
+                <h2 id="estadoCrono">Estado: </h2>
+                <div class="separa"></div>
+                <div id="crono">
+                    <div class="contador" id="minutos">00</div>
+                    <div class="contador" id="dosPuntosContador">:</div>
+                    <div class="contador" id="segundos">00</div>
+                </div>
+                <div class="separa"></div>
+                <div class="divBtnCss">
+                    <button class="btnCss" id="btnInicio">&#9658</button>
+                    <button class="btnCss" id="btnPausa">&#9208</button>
+                    <button class="btnCss" id="btnStop">&#9632</button>
+                </div>
+                <div class="separa"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-1 col-sm-2 col-md-2 col-lg-2"></div>
+            <div class="col-xs-10 col-sm-8 col-md-8 col-lg-8 jumbo">
+                <h2 id="cicloPomodoro">Ciclo de 4 Pomodoros</h2>
+                <div id="bordeBarra">
+                    <div id="barraEstado1"></div>
+                    <div id="barraEstado2"></div>
+                    <div id="barraEstado3"></div>
+                    <div id="barraEstado4"></div>
+                </div>
+
+            </div>
+            <div class="col-xs-1 col-sm-2 col-md-2 col-lg-2"></div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="js/js_timer2.js"></script>
+</body>
+
+</html>
