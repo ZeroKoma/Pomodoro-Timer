@@ -47,7 +47,7 @@ function iniciar() {
         document.getElementById("minutos").innerHTML = datoMin;
 
 
-        if (!stop) x = setTimeout(function() { crono(datoSeg, datoMin) }, 1000);
+        if (!stop) x = setTimeout(function() { crono(datoSeg, datoMin) }, 5);
     }
 
     function controlador(datoSeg, datoMin) {
@@ -163,23 +163,18 @@ function iniciar() {
         if ((dato != 0) && (dato <= 4)) {
             switch (dato) {
                 case 1:
-                    document.getElementById("barraEstado1").style.border = "3px solid #A0906F";
+                    document.getElementById("barraEstado1").style.backgroundImage = "../img/favicon.png";
                     break;
                 case 2:
-                    document.getElementById("barraEstado2").style.border = "3px solid #A0906F";
+                    document.getElementById("barraEstado2").style.backgroundImage = "../img/favicon.png";
                     break;
                 case 3:
-                    document.getElementById("barraEstado3").style.border = "3px solid #A0906F";
+                    document.getElementById("barraEstado3").style.backgroundImage = "../img/favicon.png";
                     break;
                 case 4:
-                    document.getElementById("barraEstado4").style.border = "3px solid #A0906F";
+                    document.getElementById("barraEstado4").style.backgroundImage = "../img/favicon.png";
                     break;
             };
-        } else {
-            document.getElementById("barraEstado1").style.backgroundImage = "../img/favicon.png";
-            document.getElementById("barraEstado2").style.backgroundImage = "../img/favicon.png";
-            document.getElementById("barraEstado3").style.backgroundImage = "../img/favicon.png";
-            document.getElementById("barraEstado4").style.backgroundImage = "../img/favicon.png";
         }
     }
 
@@ -190,22 +185,21 @@ function iniciar() {
             switch (dato) {
                 case 0:
                     document.getElementById("barraEstado1").style.border = "3px solid #A0906F";
+                    document.getElementById("barraEstado1").style.backgroundImage = "../img/faviconGris.png";
                     break;
                 case 1:
                     document.getElementById("barraEstado2").style.border = "3px solid #A0906F";
+                    document.getElementById("barraEstado2").style.backgroundImage = "../img/faviconGris.png";
                     break;
                 case 2:
                     document.getElementById("barraEstado3").style.border = "3px solid #A0906F";
+                    document.getElementById("barraEstado3").style.backgroundImage = "../img/faviconGris.png";
                     break;
                 case 3:
                     document.getElementById("barraEstado4").style.border = "3px solid #A0906F";
+                    document.getElementById("barraEstado4").style.backgroundImage = "../img/faviconGris.png";
                     break;
             };
-        } else {
-            document.getElementById("barraEstado1").style.backgroundImage = "../img/favicon.png";
-            document.getElementById("barraEstado2").style.backgroundImage = "../img/favicon.png";
-            document.getElementById("barraEstado3").style.backgroundImage = "../img/favicon.png";
-            document.getElementById("barraEstado4").style.backgroundImage = "../img/favicon.png";
         }
     }
 
@@ -232,9 +226,9 @@ function iniciar() {
         document.getElementById("btnPausa").style.border = "3px solid #A0906F";
         document.getElementById("btnStop").style.border = "1px solid #A0906F";
         document.getElementById("barraEstado1").style.backgroundColor = "rgba(52, 42, 33, 1)";
-        document.getElementById("barraEstado2").style.backgroundImage = "../img/favicon.png";
-        document.getElementById("barraEstado3").style.backgroundImage = "../img/favicon.png";
-        document.getElementById("barraEstado4").style.backgroundImage = "../img/favicon.png";
+        document.getElementById("barraEstado2").style.backgroundImage = "../img/faviconGris.png";
+        document.getElementById("barraEstado3").style.backgroundImage = "../img/faviconGris.png";
+        document.getElementById("barraEstado4").style.backgroundImage = "../img/faviconGris.png";
         document.getElementById("barraEstado1").style.border = "1px solid #A0906F";
         document.getElementById("barraEstado2").style.border = "1px solid #A0906F";
         document.getElementById("barraEstado3").style.border = "1px solid #A0906F";
@@ -254,7 +248,7 @@ function iniciar() {
         document.getElementById("btnPausa").style.border = "1px solid #A0906F";
         document.getElementById("btnStop").style.border = "3px solid #A0906F";
         document.getElementById("barraEstado4").style.backgroundImage = "../img/favicon.png";
-        ciclo = 4;
+        ciclo = 0;
         pintaCiclo(ciclo);
         alarma();
 
@@ -287,7 +281,7 @@ function iniciar() {
     function notifyMe(title, options) {
         // Check if the browser supports notifications
         if (!("Notification" in window)) {
-            console.log("This browser does not support desktop notification");
+            console.log("Este navegador que estas usando no soporta notificaciones.");
         }
 
         // Check whether notification permissions have alredy been granted
