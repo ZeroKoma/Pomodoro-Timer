@@ -1,5 +1,8 @@
 body {
-    height: 100vh;
+    /*height: 100vh;*/
+    background: url(../img/fondoReloj.jpg) no-repeat center fixed;
+    background-size: cover;
+    /*overflow: hidden;*/
 }
 
 .container-fluid {
@@ -15,7 +18,13 @@ body {
 /* H E A D E R */
 
 #cabecera {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: #342A21;
+    height: 125px;
+    top: 0;
+    position: fixed;
 }
 
 #titulo {
@@ -34,23 +43,14 @@ body {
 
 /* C U E R P O   D E  L A  P A G I N A */
 
-#principal {
-    height: 600px;
-    background: url(../img/fondoReloj.jpg) no-repeat center fixed;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: flex;
-    align-items: center;
-}
-
 .fondoCrono {
+    border: 1px solid black;
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 600px;
+    justify-content: center;
     background-color: rgba(160, 144, 111, 0.65);
+    height: 100vh;
     /* #FCE2C7 */
 }
 
@@ -62,6 +62,7 @@ body {
     font-size: 100px;
     font-weight: bold;
     text-shadow: 0px 0px 1px #FCE2C7;
+    color: #342A21;
 }
 
 #dosPuntosContador {
@@ -85,9 +86,107 @@ body {
     cursor: pointer;
     margin-right: 10px;
     background-color: #342A21;
-    box-shadow: 0px 0px 5px #3C3837;
+    box-shadow: 2px 2px 10px black;
 }
 
 .btnCss:hover {
-    box-shadow: 0px 0px 10px #342A21;
+    box-shadow: 3px 3px 20px black;
+}
+
+
+/* C I C L O   P O M O D O R O */
+
+#fondoCicloPomodoro {
+    background-color: #342A21;
+    min-height: 125px;
+    color: #A0906F;
+    text-align: center;
+}
+
+#bordeBarra {
+    margin: 0 auto;
+    width: 320px;
+    display: flex;
+    justify-content: center;
+}
+
+#barraEstado1,
+#barraEstado2,
+#barraEstado3,
+#barraEstado4 {
+    width: 50px;
+    height: 50px;
+    margin: 5px;
+    background-image: url("../img/favicon.png");
+    background-size: 30px 30px;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 5px;
+}
+
+
+/* B T N   A L A R M A  */
+
+#btnAlarma {
+    width: 300px;
+    height: 50px;
+    color: #A0906F;
+    border: 2px solid #A0906F;
+    background-color: #342A21;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+    font-size: 30px;
+    box-shadow: 0px 0px 10px black;
+}
+
+#alarma button:hover {
+    box-shadow: 0px 0px 20px black;
+}
+
+#alarma {
+    visibility: hidden;
+    margin-top: 40px;
+    margin-bottom: 25px;
+}
+
+
+/* F O O T E R */
+
+.bottomFixed {
+    width: 100%;
+    bottom: 0px;
+    position: fixed;
+}
+
+#footer {
+    background-color: #3C3837;
+    color: #A0906F;
+    font-size: 15px;
+    text-align: center;
+    font-weight: bold;
+    padding-top: 10px;
+}
+
+#btnSobre {
+    color: #A0906F;
+    text-decoration: none;
+}
+
+#btnSobre:hover {
+    text-decoration: underline;
+}
+
+@media screen and (max-width:425px) {
+    #titulo {
+        font-size: 35px;
+        padding: 10px;
+    }
+    .contador {
+        font-size: 85px;
+    }
+    #tomatoImg {
+        width: 30px;
+        height: 30px;
+    }
 }
