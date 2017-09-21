@@ -43,8 +43,11 @@ function iniciar() {
         }
 
         if (datoSeg < 10) { datoSeg = "0" + datoSeg }
+        if (datoMin < 10) { document.getElementById("minutos").innerHTML = "0" + datoMin; } else {
+            document.getElementById("minutos").innerHTML = datoMin;
+        }
+
         document.getElementById("segundos").innerHTML = datoSeg;
-        document.getElementById("minutos").innerHTML = datoMin;
 
 
         if (!stop) x = setTimeout(function() { crono(datoSeg, datoMin) }, 5);
@@ -93,6 +96,7 @@ function iniciar() {
     }
 
     document.getElementById("btnInicio").addEventListener("click", function play() {
+
         if (estadoPlay) {
             if (timer_is_on == 0) {
                 timer_is_on = 1;
@@ -163,18 +167,23 @@ function iniciar() {
         if ((dato != 0) && (dato <= 4)) {
             switch (dato) {
                 case 1:
-                    document.getElementById("barraEstado1").style.backgroundImage = "../img/favicon.png";
+                    document.getElementById("barraEstado1").style.backgroundImage = "url('./img/favicon.png')";
                     break;
                 case 2:
-                    document.getElementById("barraEstado2").style.backgroundImage = "../img/favicon.png";
+                    document.getElementById("barraEstado2").style.backgroundImage = "url('./img/favicon.png')";
                     break;
                 case 3:
-                    document.getElementById("barraEstado3").style.backgroundImage = "../img/favicon.png";
+                    document.getElementById("barraEstado3").style.backgroundImage = "url('./img/favicon.png')";
                     break;
                 case 4:
-                    document.getElementById("barraEstado4").style.backgroundImage = "../img/favicon.png";
+                    document.getElementById("barraEstado4").style.backgroundImage = "url('./img/favicon.png')";
                     break;
             };
+        } else {
+            document.getElementById("barraEstado1").style.backgroundImage = "url('./img/faviconGris.png')";
+            document.getElementById("barraEstado2").style.backgroundImage = "url('./img/faviconGris.png')";
+            document.getElementById("barraEstado3").style.backgroundImage = "url('./img/faviconGris.png')";
+            document.getElementById("barraEstado4").style.backgroundImage = "url('./img/faviconGris.png')";
         }
     }
 
@@ -185,19 +194,19 @@ function iniciar() {
             switch (dato) {
                 case 0:
                     document.getElementById("barraEstado1").style.border = "3px solid #A0906F";
-                    document.getElementById("barraEstado1").style.backgroundImage = "../img/faviconGris.png";
+
                     break;
                 case 1:
                     document.getElementById("barraEstado2").style.border = "3px solid #A0906F";
-                    document.getElementById("barraEstado2").style.backgroundImage = "../img/faviconGris.png";
+
                     break;
                 case 2:
                     document.getElementById("barraEstado3").style.border = "3px solid #A0906F";
-                    document.getElementById("barraEstado3").style.backgroundImage = "../img/faviconGris.png";
+
                     break;
                 case 3:
                     document.getElementById("barraEstado4").style.border = "3px solid #A0906F";
-                    document.getElementById("barraEstado4").style.backgroundImage = "../img/faviconGris.png";
+
                     break;
             };
         }
@@ -226,9 +235,9 @@ function iniciar() {
         document.getElementById("btnPausa").style.border = "3px solid #A0906F";
         document.getElementById("btnStop").style.border = "1px solid #A0906F";
         document.getElementById("barraEstado1").style.backgroundColor = "rgba(52, 42, 33, 1)";
-        document.getElementById("barraEstado2").style.backgroundImage = "../img/faviconGris.png";
-        document.getElementById("barraEstado3").style.backgroundImage = "../img/faviconGris.png";
-        document.getElementById("barraEstado4").style.backgroundImage = "../img/faviconGris.png";
+        document.getElementById("barraEstado2").style.backgroundImage = "./img/faviconGris.png";
+        document.getElementById("barraEstado3").style.backgroundImage = "./img/faviconGris.png";
+        document.getElementById("barraEstado4").style.backgroundImage = "./img/faviconGris.png";
         document.getElementById("barraEstado1").style.border = "1px solid #A0906F";
         document.getElementById("barraEstado2").style.border = "1px solid #A0906F";
         document.getElementById("barraEstado3").style.border = "1px solid #A0906F";
@@ -242,16 +251,14 @@ function iniciar() {
         clearTimeout(x);
         timer_is_on = 0;
         stop = true;
-        document.getElementById("minutos").innerHTML = "00";
+        document.getElementById("minutos").innerHTML = "sdfasdfa00";
         document.getElementById("segundos").innerHTML = ":00";
         document.getElementById("btnInicio").style.border = "1px solid #A0906F";
         document.getElementById("btnPausa").style.border = "1px solid #A0906F";
         document.getElementById("btnStop").style.border = "3px solid #A0906F";
-        document.getElementById("barraEstado4").style.backgroundImage = "../img/favicon.png";
-        ciclo = 0;
-        pintaCiclo(ciclo);
+        document.getElementById("barraEstado4").style.backgroundImage = "url('./img/favicon.png')";
         alarma();
-
+        ciclo = 0;
     }
 
     function alarma() {
