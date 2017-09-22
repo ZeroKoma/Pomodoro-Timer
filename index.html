@@ -13,8 +13,8 @@
 </head>
 
 <body onload="iniciar()">
-    <div class="container-fluid fondo100vh">
-        <div class="row">
+    <main class="container-fluid">
+        <section class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 fondoCrono">
                 <h2 id="estadoCrono">Estado: </h2>
                 <div id="crono">
@@ -37,8 +37,8 @@
                     <source src="sounds/campana.mp3" type="audio/mpeg">
                     Tu navegador no soporta audio
             </audio>
-        </div>
-        <div class="row">
+        </section>
+        <header class="row">
             <div id="cabecera" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <div class="separa"></div>
@@ -46,8 +46,8 @@
                     <div class="separa"></div>
                 </div>
             </div>
-        </div>
-        <div class="row bottomFixed">
+        </header>
+        <footer class="row bottomFixed">
             <div id="fondoCicloPomodoro" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
                 <h3 id="cicloPomodoro">Ciclo de 4 Pomodoros</h3>
@@ -58,7 +58,7 @@
                     <div id="barraEstado3"></div>
                     <div id="barraEstado4"></div>
                 </div>
-                <span style="color: #A0906F;"><sub>( under construction )</sub></span>
+
                 <div class="separa"></div>
 
             </div>
@@ -80,9 +80,9 @@
                 </div>
 
             </div>
-        </div>
+        </footer>
 
-    </div>
+    </main>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>

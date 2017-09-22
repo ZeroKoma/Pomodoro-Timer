@@ -1,8 +1,6 @@
 body {
-    /*height: 100vh;*/
     background: url(../img/fondoReloj.jpg) no-repeat center fixed;
     background-size: cover;
-    /*overflow: hidden;*/
 }
 
 .container-fluid {
@@ -22,7 +20,7 @@ body {
     align-items: center;
     justify-content: center;
     background-color: #342A21;
-    height: 125px;
+    min-height: 125px;
     top: 0;
     position: fixed;
 }
@@ -50,6 +48,7 @@ body {
     align-items: center;
     justify-content: center;
     background-color: rgba(160, 144, 111, 0.65);
+    /* Suaviza foto de fondo */
     height: 100vh;
     /* #FCE2C7 */
 }
@@ -70,6 +69,9 @@ body {
     margin-left: 12px;
     margin-right: 12px;
 }
+
+
+/* btn play, pause y stop */
 
 .divBtnCss {
     display: flex;
@@ -102,6 +104,9 @@ body {
     color: #A0906F;
     text-align: center;
 }
+
+
+/* contenedor pinta pomodoros*/
 
 #bordeBarra {
     margin: 0 auto;
@@ -168,6 +173,7 @@ body {
 }
 
 #btnSobre {
+    /* enlace a wiki - técnica pomodoro */
     color: #A0906F;
     text-decoration: none;
 }
