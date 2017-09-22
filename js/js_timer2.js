@@ -93,7 +93,7 @@ function iniciar() {
         document.getElementById("segundos").innerHTML = datoSeg;
 
 
-        if (!stop) x = setTimeout(function() { crono(datoSeg, datoMin) }, 5);
+        if (!stop) x = setTimeout(function() { crono(datoSeg, datoMin) }, 1000);
     }
 
     // Cuando crono llega a cero tanto en tiempo de trabajo como de descanso
