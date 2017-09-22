@@ -93,7 +93,7 @@ function iniciar() {
         document.getElementById("segundos").innerHTML = datoSeg;
 
 
-        if (!stop) x = setTimeout(function() { crono(datoSeg, datoMin) }, 1000);
+        if (!stop) x = setTimeout(function() { crono(datoSeg, datoMin) }, 5);
     }
 
     // Cuando crono llega a cero tanto en tiempo de trabajo como de descanso
@@ -316,7 +316,8 @@ function iniciar() {
             estadoPause = false;
             estadoStop = false;
             iniciaPantalla();
-            indicaCicloTxt("");
+            var x = document.getElementById("cicloPomodoro");
+            x.innerHTML = "Ciclo de 4 Pomodoros";
             stop = true;
         }
     });
