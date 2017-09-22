@@ -1,6 +1,7 @@
 function iniciar() {
+    var fin4Pomodoros = false; // indica si se ha completado los 4 pomodoros
     var CicloTrabajo = true; // true si crono tiempo trabajo - false descanso
-    var estadoPlay = true;
+    var estadoPlay = true; // activa - desactiva botones
     var estadoPause = false;
     var estadoStop = false;
     timer_is_on = 0; // si crono parado o no. para btn pausa.
@@ -11,7 +12,7 @@ function iniciar() {
     var x; // aux para crono 
     var segundos = 60;
     var minutos = 0;
-    var stop = true;
+    var stop = true; //si se pulsa btn Stop se inicializa todo
     var title = "Pomodoro Timer:";
     var options = { body: "Alarma disparada!" };
     var fondo = "negro";
@@ -19,6 +20,38 @@ function iniciar() {
         console.log(result);
     });
 
+    // F U N C I O N E S
+
+    /* I N I C I A L I Z A   P A N T A L L A  */
+
+    function iniciaPantalla() {
+        estadoCrono = "<b>Parado</b>";
+        muestraEstado(estadoCrono);
+        clearTimeout(x);
+        timer_is_on = 0;
+        CicloTrabajo = true;
+        wrkTime = 24;
+        wrkPause = 4;
+        ciclo = 0;
+        segundos = 60;
+        minutos = wrkTime;
+        var estadoPlay = true;
+        var estadoPause = false;
+        var estadoStop = false;
+        document.getElementById("minutos").innerHTML = "00";
+        document.getElementById("segundos").innerHTML = "00";
+        document.getElementById("btnInicio").style.border = "3px solid #A0906F";
+        document.getElementById("btnPausa").style.border = "3px solid #A0906F";
+        document.getElementById("btnStop").style.border = "1px solid #A0906F";
+        document.getElementById("barraEstado1").style.backgroundImage = "url('./img/faviconGris.png')";
+        document.getElementById("barraEstado2").style.backgroundImage = "url('./img/faviconGris.png')";
+        document.getElementById("barraEstado3").style.backgroundImage = "url('./img/faviconGris.png')";
+        document.getElementById("barraEstado4").style.backgroundImage = "url('./img/faviconGris.png')";
+        document.getElementById("barraEstado1").style.border = "1px solid #A0906F";
+        document.getElementById("barraEstado2").style.border = "1px solid #A0906F";
+        document.getElementById("barraEstado3").style.border = "1px solid #A0906F";
+        document.getElementById("barraEstado4").style.border = "1px solid #A0906F";
+    }
 
 
 
@@ -58,7 +91,6 @@ function iniciar() {
             stop = true;
             notifyMe(title, options);
             if (CicloTrabajo) {
-                alert("ciclo trabajo true: CicloTrabajo");
                 clearTimeout(x);
                 minutos = wrkPause;
                 segundos = 59;
@@ -70,25 +102,25 @@ function iniciar() {
                 document.getElementById("btnPausa").style.border = "3px solid #A0906F";
                 document.getElementById("btnStop").style.border = "1px solid #A0906F";
                 alarma();
-            }
+            } else {
+                ciclo += 1;
+                pintaCiclo(ciclo);
+                if (ciclo >= 4) {
+                    finCuatroCiclos();
+                } else {
+                    CicloTrabajo = true;
+                    clearTimeout(x);
+                    timer_is_on = 0;
+                    minutos = wrkTime;
+                    segundos = 59;
+                    estadoCrono = "Ciclo " + (ciclo) + " finalizado. Play para iniciar ciclo:" + (ciclo + 1);
+                    muestraEstado(estadoCrono);
+                    document.getElementById("btnInicio").style.border = "3px solid #A0906F";
+                    document.getElementById("btnPausa").style.border = "3px solid #A0906F";
+                    document.getElementById("btnStop").style.border = "1px solid #A0906F";
 
-        } else {
-            alert("ciclo trabajo false: CicloTrabajo");
-            ciclo += 1;
-            pintaCiclo(ciclo);
-            if (ciclo >= 4) { finCuatroCiclos() } else {
-                CicloTrabajo = true;
-                clearTimeout(x);
-                timer_is_on = 0;
-                minutos = wrkTime;
-                segundos = 59;
-                estadoCrono = "Ciclo " + (ciclo) + " finalizado. Play para iniciar ciclo:" + (ciclo + 1);
-                muestraEstado(estadoCrono);
-                document.getElementById("btnInicio").style.border = "3px solid #A0906F";
-                document.getElementById("btnPausa").style.border = "3px solid #A0906F";
-                document.getElementById("btnStop").style.border = "1px solid #A0906F";
-
-                alarma();
+                    alarma();
+                }
             }
         }
     }
@@ -97,6 +129,7 @@ function iniciar() {
     document.getElementById("btnInicio").addEventListener("click", function play() {
 
         if (estadoPlay) {
+            if (fin4Pomodoros) { iniciaPantalla };
             if (timer_is_on == 0) {
                 timer_is_on = 1;
                 /*segundos = 59;*/
@@ -179,11 +212,6 @@ function iniciar() {
                     document.getElementById("barraEstado4").style.backgroundImage = "url('./img/favicon.png')";
                     break;
             };
-        } else {
-            document.getElementById("barraEstado1").style.backgroundImage = "url('./img/faviconGris.png')";
-            document.getElementById("barraEstado2").style.backgroundImage = "url('./img/faviconGris.png')";
-            document.getElementById("barraEstado3").style.backgroundImage = "url('./img/faviconGris.png')";
-            document.getElementById("barraEstado4").style.backgroundImage = "url('./img/faviconGris.png')";
         }
     }
 
@@ -213,37 +241,6 @@ function iniciar() {
     }
 
 
-    /* I N I C I A L I Z A   P A N T A L L A  */
-
-    function iniciaPantalla() {
-        estadoCrono = "<b>Parado</b>";
-        muestraEstado(estadoCrono);
-        clearTimeout(x);
-        timer_is_on = 0;
-        CicloTrabajo = true;
-        wrkTime = 24;
-        wrkPause = 4;
-        ciclo = 0;
-        segundos = 60;
-        minutos = wrkTime;
-        var estadoPlay = true;
-        var estadoPause = false;
-        var estadoStop = false;
-        document.getElementById("minutos").innerHTML = "00";
-        document.getElementById("segundos").innerHTML = "00";
-        document.getElementById("btnInicio").style.border = "3px solid #A0906F";
-        document.getElementById("btnPausa").style.border = "3px solid #A0906F";
-        document.getElementById("btnStop").style.border = "1px solid #A0906F";
-        document.getElementById("barraEstado1").style.backgroundColor = "rgba(52, 42, 33, 1)";
-        document.getElementById("barraEstado2").style.backgroundImage = "./img/faviconGris.png";
-        document.getElementById("barraEstado3").style.backgroundImage = "./img/faviconGris.png";
-        document.getElementById("barraEstado4").style.backgroundImage = "./img/faviconGris.png";
-        document.getElementById("barraEstado1").style.border = "1px solid #A0906F";
-        document.getElementById("barraEstado2").style.border = "1px solid #A0906F";
-        document.getElementById("barraEstado3").style.border = "1px solid #A0906F";
-        document.getElementById("barraEstado4").style.border = "1px solid #A0906F";
-        pintaCiclo(0);
-    }
 
     function finCuatroCiclos() {
         estadoCrono = "Has finalizado los 4 ciclos!";
@@ -259,6 +256,7 @@ function iniciar() {
         document.getElementById("barraEstado4").style.backgroundImage = "url('./img/favicon.png')";
         alarma();
         ciclo = 0;
+        fin4Pomodoros = true;
     }
 
     function alarma() {
