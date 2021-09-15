@@ -107,7 +107,7 @@ function iniciar() {
     if (!stop)
       x = setTimeout(function () {
         crono(datoSeg, datoMin);
-      }, 1000);
+      }, 10);
   }
 
   // Cuando crono llega a cero tanto en tiempo de trabajo como de descanso
@@ -247,6 +247,13 @@ function iniciar() {
         audio.volume = 0;
         audio.loop = false;
       });
+    document.addEventListener("keyup", (event) => {
+      if (event.code === "Space") {
+        document.getElementById("alarma").style.visibility = "hidden";
+        audio.volume = 0;
+        audio.loop = false;
+      }
+    });
   }
 
   function tictac() {
