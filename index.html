@@ -37,13 +37,18 @@
                     <source src="sounds/campana.mp3" type="audio/mpeg">
                     Tu navegador no soporta audio
             </audio>
+            <audio id="audio2">
+                <source src="sounds/clock-tick1.wav" type="audio/wav">
+                Tu navegador no soporta audio
+        </audio>
         </section>
         <header class="row">
             <div id="cabecera" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <div class="separa"></div>
+
                     <h1 id="titulo">POMODORO <span><img id="tomatoImg" src="img/favicon.png" alt="pomodoro"></span> TIMER</h1>
-                    <div class="separa"></div>
+
+
                 </div>
             </div>
         </header>
@@ -58,9 +63,11 @@
                     <div id="barraEstado3"></div>
                     <div id="barraEstado4"></div>
                 </div>
+                <div>
+                    <span>Tic Tac On/Off:<br> </span>
+                    <span id="tictacId" class="glyphicon glyphicon-volume-down tictacStyle"></span>
 
-                <div class="separa"></div>
-
+                </div>
             </div>
 
 
@@ -72,8 +79,9 @@
                     </a>
                 </div>
                 <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                    <p>Borealos 2017</p>
+                    <a id="btnSobre" target="_blank" alt="BorealOS Web" href="http://www.borealos.com">BorealOS 2017</a>
                 </div>
+
                 <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
                     <span>Hora actual:</span>
                     <span id="reloj"></span>

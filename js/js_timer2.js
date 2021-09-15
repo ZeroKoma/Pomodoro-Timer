@@ -6,7 +6,7 @@ function iniciar() {
     var estadoStop = false;
     timer_is_on = 0; // si crono parado o no. para btn pausa.
     var ciclo = 0; // nº de pomodoros
-    var wrkTime = 24; // 25 min de estudio/trabajo
+    var wrkTime = 1; // 25 min de estudio/trabajo
     var wrkPause = 4; // 5 min de descanso
     var estadoCrono = "Parado"; // string pantalla indica trabajo o descanso
     var x; // aux para crono 
@@ -16,9 +16,12 @@ function iniciar() {
     var title = "Pomodoro Timer:";
     var options = { body: "Alarma disparada!" };
     var fondo = "negro";
-    var permiso = Notification.requestPermission().then(function(result) {
-        console.log(result);
+    function pedirPermiso(){Notification.requestPermission().then(function(result) {
+        console.log('Permiso para notificaciones: ',result);
+        console.log('Notification.permission === ',Notification.permission)
     });
+}
+    var tictacOn = 1; // sonido tictac reloj apagado=0 volumen=1 +volumen=2
 
     // F U N C I O N E S
 
@@ -34,13 +37,14 @@ function iniciar() {
     /* I N I C I A L I Z A   P A N T A L L A  */
 
     function iniciaPantalla() {
+        pedirPermiso()
         fin4Pomodoros = false;
         estadoCrono = "<b>Parado</b>";
         muestraEstado(estadoCrono);
         clearTimeout(x);
         timer_is_on = 0;
         CicloTrabajo = true;
-        wrkTime = 24;
+        wrkTime = 1;
         wrkPause = 4;
         ciclo = 0;
         segundos = 60;
@@ -76,6 +80,7 @@ function iniciar() {
 
     function crono(datoSeg, datoMin) {
         datoSeg = datoSeg - 1;
+        tictac();
         segundos = datoSeg;
         controlador(datoSeg, datoMin);
 
@@ -224,6 +229,26 @@ function iniciar() {
         });
     }
 
+    function tictac() {
+        var audio = document.getElementById("audio2");
+        switch (tictacOn) {
+            case 0:
+                audio.volume = 0;
+                break;
+            case 1:
+                audio.volume = .1;
+                break;
+            case 2:
+                audio.volume = .5;
+                break;
+        }
+        audio.play();
+    }
+
+
+
+
+
     // Texto con ciclo actual en trabajo o descansando
 
     function indicaCicloTxt(dato) {
@@ -234,18 +259,20 @@ function iniciar() {
     // Envia notificacion al desktop al sonar la alarma 
 
     function notifyMe(title, options) {
+        console.log('Notification.permission === ',Notification.permission)
         if (!("Notification" in window)) {
             console.log("Este navegador que estas usando no soporta notificaciones.");
         } else if (Notification.permission === "granted") {
             // If it's okay let's create a notification
-            var notification = new Notification(title, options);
-        } else if (Notification.permission !== 'denied') {
-            Notification.requestPermission(function(permission) {
-                if (permission === "granted") {
-                    var notification = new Notification(title, options);
-                }
-            });
+            new Notification(title, options);
         }
+        // } else if (Notification.permission !== 'denied') {
+        //     Notification.requestPermission(function(permission) {
+        //         if (permission === "granted") {
+        //             var notification = new Notification(title, options);
+        //         }
+        //     });
+        // }
     };
 
     // S C R I P T
@@ -320,6 +347,28 @@ function iniciar() {
             x.innerHTML = "Ciclo de 4 Pomodoros";
             stop = true;
         }
+    });
+
+    // btn tic tac on/off
+
+    document.getElementById("tictacId").addEventListener("click", function() {
+        switch (tictacOn) {
+            case 0:
+                tictacOn = 1;
+                document.getElementById("tictacId").className = "glyphicon glyphicon-volume-down";
+                break;
+            case 1:
+                tictacOn = 2;
+                document.getElementById("tictacId").className = "glyphicon glyphicon-volume-up";
+                break;
+            case 2:
+                tictacOn = 0;
+                document.getElementById("tictacId").className = "glyphicon glyphicon-volume-off";
+                break;
+        }
+
+        document.getElementById("tictacId").style.cursor = "pointer";
+        document.getElementById("tictacId").style.fontSize = "25px";
     });
 
 } // fin corchete funcion iniciar

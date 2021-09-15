@@ -20,7 +20,7 @@ body {
     align-items: center;
     justify-content: center;
     background-color: #342A21;
-    min-height: 125px;
+    min-height: 120px;
     top: 0;
     position: fixed;
 }
@@ -194,4 +194,12 @@ body {
         width: 30px;
         height: 30px;
     }
+}
+
+
+/* tictac sound on/off */
+
+.tictacStyle {
+    font-size: 25px !important;
+    cursor: pointer;
 }
