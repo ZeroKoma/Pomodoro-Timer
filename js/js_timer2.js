@@ -6,7 +6,7 @@ function iniciar() {
   let estadoStop = false;
   timer_is_on = 0; // si crono parado o no. para btn pausa.
   let ciclo = 0; // nº de pomodoros
-  let wrkTime = 5; // 25 min de estudio/trabajo
+  let wrkTime = 25; // 25 min de estudio/trabajo
   let wrkPause = 4; // 5 min de descanso
   let estadoCrono = "Parado"; // string pantalla indica trabajo o descanso
   let x; // aux para crono
@@ -107,7 +107,7 @@ function iniciar() {
     if (!stop)
       x = setTimeout(function () {
         crono(datoSeg, datoMin);
-      }, 1);
+      }, 1000);
   }
 
   // Cuando crono llega a cero tanto en tiempo de trabajo como de descanso
