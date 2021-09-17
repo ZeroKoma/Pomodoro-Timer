@@ -39,7 +39,7 @@ function iniciar() {
   /* I N I C I A L I Z A   P A N T A L L A  */
 
   function iniciaPantalla() {
-    pedirPermiso();
+    if (!isMobile()) pedirPermiso();
     fin4Pomodoros = false;
     estadoCrono = "<b>Parado</b>";
     muestraEstado(estadoCrono);
@@ -107,15 +107,29 @@ function iniciar() {
     if (!stop)
       x = setTimeout(function () {
         crono(datoSeg, datoMin);
-      }, 1000);
+      }, 10);
   }
 
   // Cuando crono llega a cero tanto en tiempo de trabajo como de descanso
 
+  function isMobile() {
+    // credit to Timothy Huang for this regex test:
+    // https://dev.to/timhuang/a-simple-way-to-detect-if-browser-is-on-a-mobile-device-with-javascript-44j3
+    if (
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent
+      )
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   function controlador(datoSeg, datoMin) {
     if (datoSeg == 0 && datoMin == 0) {
       stop = true;
-      notifyMe(title, options);
+      if (!isMobile()) notifyMe(title, options);
       if (CicloTrabajo) {
         clearTimeout(x);
         minutos = wrkPause;
