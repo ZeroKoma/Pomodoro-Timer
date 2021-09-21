@@ -243,7 +243,10 @@ function finCuatroCiclos() {
 
 // alarma
 function alarma() {
-  document.getElementById("alarma").style.visibility = "visible";
+  var myModal = new bootstrap.Modal(document.getElementById("exampleModal"), {
+    keyboard: false,
+  });
+  myModal.show();
   estadoPlay = true;
   estadoPause = false;
   estadoStop = true;
@@ -264,7 +267,6 @@ function alarma() {
   document
     .getElementById("btnAlarma")
     .addEventListener("click", function pararAlarma() {
-      document.getElementById("alarma").style.visibility = "hidden";
       audio.volume = 0;
       audio.loop = false;
     });

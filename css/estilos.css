@@ -169,9 +169,21 @@ body {
 }
 /* B T N   A L A R M A  */
 
+.modal-content {
+  /* 99 opacity 60%*/
+  /* background-color: #342a2199 !important; */
+  background-color: transparent !important;
+}
+
+.modal-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 #btnAlarma {
-  width: 200px;
-  height: 50px;
+  width: 310px;
+  height: 200px;
   color: #a0906f;
   border: 2px solid #a0906f;
   background-color: #342a21;
@@ -184,13 +196,6 @@ body {
 
 #alarma button:hover {
   box-shadow: 0px 0px 20px black;
-}
-
-#alarma {
-  visibility: hidden;
-  /* display: none; */
-  margin-bottom: 15px;
-  z-index: 999;
 }
 
 /* F O O T E R */

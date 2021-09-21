@@ -73,11 +73,20 @@
                     TIMER</h1>
             </div>
         </header>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-fullscreen">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div id="alarma">
+                            <button id="btnAlarma" data-bs-dismiss="modal">&#9200; Parar Alarma</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <section class="row">
             <div class="col-12 fondoCrono">
-                <div id="alarma">
-                    <button id="btnAlarma">&#9200; Parar Alarma</button>
-                </div>
                 <h2 id="estadoCrono">Estado: </h2>
                 <div id="crono">
                     <div class="contador" id="minutos">00</div>
