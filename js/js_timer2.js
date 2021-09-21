@@ -102,7 +102,7 @@ function crono(datoSeg, datoMin) {
   }
 
   document.getElementById("segundos").innerHTML = datoSeg;
-
+  document.title = datoMin + ":" + datoSeg;
   if (!stop)
     x = setTimeout(function () {
       crono(datoSeg, datoMin);
@@ -442,6 +442,7 @@ function iniciar() {
       estadoPlay = true;
       estadoPause = false;
       estadoStop = false;
+      document.title = "Pomodoro Timer";
       iniciaPantalla();
       let x = document.getElementById("cicloPomodoro");
       x.innerHTML = "Pomodoros:";
