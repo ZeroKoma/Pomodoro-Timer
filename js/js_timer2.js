@@ -6,7 +6,7 @@ function iniciar() {
   let estadoStop = false;
   timer_is_on = 0; // si crono parado o no. para btn pausa.
   let ciclo = 0; // nº de pomodoros
-  let wrkTime = 25; // 25 min de estudio/trabajo
+  let wrkTime = 24; // 25 min de estudio/trabajo
   let wrkPause = 4; // 5 min de descanso
   let estadoCrono = "Parado"; // string pantalla indica trabajo o descanso
   let x; // aux para crono
@@ -402,17 +402,16 @@ function iniciar() {
       case 0:
         tictacOn = 1;
         document.getElementById("tictacId").className =
-          "glyphicon glyphicon-volume-down";
+          "bi bi-volume-down-fill";
         break;
       case 1:
         tictacOn = 2;
-        document.getElementById("tictacId").className =
-          "glyphicon glyphicon-volume-up";
+        document.getElementById("tictacId").className = "bi bi-volume-up-fill";
         break;
       case 2:
         tictacOn = 0;
         document.getElementById("tictacId").className =
-          "glyphicon glyphicon-volume-off";
+          "bi bi-volume-mute-fill";
         break;
     }
 

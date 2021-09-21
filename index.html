@@ -3,34 +3,31 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/estilos.css">
     <title>Pomodoro Timer</title>
     <link rel="icon" href="img/favicon.png" type="image/png" sizes="16x16">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 </head>
 
 <body onload="iniciar()">
     <main class="container-fluid">
-        <header class="row">
-            <div class="cabecera" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <div style="position: relative;" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-
-                    <h1 class="titulo">POMODORO <span><img class="tomatoImg" src="img/favicon.png"
-                                alt="pomodoro"></span>
-                        TIMER</h1>
-                    <div class="tic-tac-on-off-position">
-                        <span>Volumen:<br> </span>
-                        <span id="tictacId" class="glyphicon glyphicon-volume-down tictacStyle"></span>
-                    </div>
-
+        <header class="row cabecera">
+            <div style="position: relative;" class="col-12">
+                <h1 class="titulo">POMODORO <span><img class="tomatoImg" src="img/favicon.png" alt="pomodoro"></span>
+                    TIMER</h1>
+                <div class="tic-tac-on-off-position">
+                    <span>Volumen:<br> </span>
+                    <i id="tictacId" class="bi bi-volume-down-fill tictacStyle"></i>
                 </div>
             </div>
         </header>
         <section class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 fondoCrono">
+            <div class="col-12 fondoCrono">
                 <div id="alarma">
                     <button id="btnAlarma">&#9200; Parar Alarma</button>
                 </div>
@@ -42,11 +39,11 @@
                 </div>
 
                 <div class="divBtnCss">
-                    <button class="btnCss" id="btnInicio"><span class="glyphicon glyphicon-play"
+                    <button class="btnCss" id="btnInicio"><span class="bi bi-play-fill"
                             aria-hidden="true"></span></button>
-                    <button class="btnCss" id="btnPausa"><span class="glyphicon glyphicon-pause"
+                    <button class="btnCss" id="btnPausa"><span class="bi bi-pause-fill"
                             aria-hidden="true"></span></button>
-                    <button class="btnCss" id="btnStop"><span class="glyphicon glyphicon-stop"
+                    <button class="btnCss" id="btnStop"><span class="bi bi-stop-fill"
                             aria-hidden="true"></span></button>
                 </div>
 
@@ -63,7 +60,7 @@
         </section>
 
         <footer class="row bottomFixed">
-            <div id="fondoCicloPomodoro" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div id="fondoCicloPomodoro" class="col-12">
 
                 <h3 id="cicloPomodoro">Ciclo de 4 Pomodoros</h3>
 
@@ -78,30 +75,32 @@
 
 
 
-            <div id="footer" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                    <a id="btnSobre" alt="Wikipedia" href="https://es.wikipedia.org/wiki/T%C3%A9cnica_Pomodoro"
-                        target="_blank" title="Wikipedia">
-                        Sobre la Técnica Pomodoro
-                    </a>
-                </div>
-                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                    <a id="btnSobre" title="BorealOS Web" target="_blank" alt="BorealOS Web"
-                        href="http://www.borealos.com">BorealOS 2017</a>
-                </div>
+            <div id="footer" class="col-12">
+                <div class="row">
+                    <div class="col-12 col-sm-4 ">
+                        <a id="btnSobre" alt="Wikipedia" href="https://es.wikipedia.org/wiki/T%C3%A9cnica_Pomodoro"
+                            target="_blank" title="Wikipedia">
+                            Sobre la Técnica Pomodoro
+                        </a>
+                    </div>
+                    <div class="col-12 col-sm-4">
+                        <a id="btnSobre" title="BorealOS Web" target="_blank" alt="BorealOS Web"
+                            href="http://www.borealos.com">BorealOS 2017</a>
+                    </div>
 
-                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                    <span>Hora actual:</span>
-                    <span id="reloj"></span>
+                    <div class="col-12 col-sm-4">
+                        <span>Hora actual:</span>
+                        <span id="reloj"></span>
+                    </div>
                 </div>
-
             </div>
         </footer>
 
     </main>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+        crossorigin="anonymous"></script>
     <script src="js/js_timer2.js"></script>
 </body>
 
