@@ -14,16 +14,63 @@
         integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 </head>
 
-<body onload="iniciar()">
+<body>
     <main class="container-fluid">
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenuLabel">
+            <div class="offcanvas-header my-5">
+                <h5 class="offcanvas-title fw-bold" id="offcanvasMenuLabel">Opciones</h5>
+                <div class="btn-close-menu fw-bold" data-bs-dismiss="offcanvas" aria-label="Close" title="Cerrar"><i
+                        class="bi bi-x-lg"></i></div>
+            </div>
+            <div class="offcanvas-body">
+                <div class="fw-bold">Tiempos:<i id="timeResetBtn" title="Resetear tiempos"
+                        class="bi bi-arrow-counterclockwise resetBtn"></i>
+                </div>
+                <div class="mb-4 mt-1" style="width: 100%;  border: 1px solid #a0906f; "></div>
+                <div class="d-flex flex-row align-items-center menu-options">
+                    <span>Trabajo:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <input id="wrkTimeSlider" class="mx-2" type="range" min="25" max="120" step="5" value=25
+                        oninput="changeWkrTime(this.value)">
+                    <div id="tiempoDeTrabajo"></div>
+                </div>
+                <div class="d-flex flex-row align-items-center menu-options">
+                    <span>Descanso:&nbsp;&nbsp;</span>
+                    <input id="wrkPauseSlider" class="mx-2" type="range" min="5" max="30" step="5" value=5
+                        oninput="changeWkrPause(this.value)">
+                    <div id="tiempoDeDescanso"></div>
+                </div>
+                <div class="d-flex flex-row align-items-center menu-options">
+                    <span>Último Descanso:&nbsp;&nbsp;</span>
+                    <input id="lastPauseSlider" class="mx-2" type="range" min="5" max="60" step="5" value=25
+                        oninput="changeWkrLastPause(this.value)">
+                    <div id="tiempoUltimoDescanso"></div>
+                </div>
+                <div class="fw-bold mt-5">Volumen:<i id="volumeResetBtn" title="Resetear volumen"
+                        class="bi bi-arrow-counterclockwise resetBtn"></i>
+                </div>
+                <div class="mb-4 mt-1" style="width: 100%;  border: 1px solid #a0906f; "></div>
+                <div class=" d-flex flex-row align-items-center menu-options">
+                    <span>Tic-tac:&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <input id="ticTacVolumeSlider" class="mx-2" type="range" min="0" max="2" step="1"
+                        oninput="changeTicTacVolume(this.value)">
+                    <i id="tictacVolumeIcon" class="bi bi-volume-down-fill tictacStyle"></i>
+                </div>
+                <div class="d-flex flex-row align-items-center menu-options">
+                    <span>Alarma:&nbsp;&nbsp;</span>
+                    <input id="alarmVolumeSlider" class="mx-2" type="range" min="0" max="2" step="1"
+                        oninput="changeAlarmVolume(this.value)">
+                    <i id="alarmVolumeIcon" class="bi bi-volume-down-fill tictacStyle"></i>
+                </div>
+            </div>
+        </div>
         <header class="row cabecera">
-            <div style="position: relative;" class="col-12">
+            <div class="col-12">
+                <a id="AbreMenuLateral" class="options-icon-position" data-bs-toggle="offcanvas" href="#offcanvasMenu"
+                    role="button" aria-controls="offcanvasMenu" title="Abrir Opciones">
+                    <i class=" bi bi-list"></i>
+                </a>
                 <h1 class="titulo">POMODORO <span><img class="tomatoImg" src="img/favicon.png" alt="pomodoro"></span>
                     TIMER</h1>
-                <div class="tic-tac-on-off-position">
-                    <span>Volumen:<br> </span>
-                    <i id="tictacId" class="bi bi-volume-down-fill tictacStyle"></i>
-                </div>
             </div>
         </header>
         <section class="row">
@@ -62,7 +109,7 @@
         <footer class="row bottomFixed">
             <div id="fondoCicloPomodoro" class="col-12">
 
-                <h3 id="cicloPomodoro">Ciclo de 4 Pomodoros</h3>
+                <h3 id="cicloPomodoro">Pomodoros:</h3>
 
                 <div id="bordeBarra">
                     <div id="barraEstado1"></div>
@@ -77,18 +124,18 @@
 
             <div id="footer" class="col-12">
                 <div class="row">
-                    <div class="col-12 col-sm-4 ">
+                    <!-- <div class="col-12 col-sm-4 ">
                         <a id="btnSobre" alt="Wikipedia" href="https://es.wikipedia.org/wiki/T%C3%A9cnica_Pomodoro"
                             target="_blank" title="Wikipedia">
                             Sobre la Técnica Pomodoro
                         </a>
-                    </div>
-                    <div class="col-12 col-sm-4">
+                    </div> -->
+                    <div class="col-12 col-sm-6">
                         <a id="btnSobre" title="BorealOS Web" target="_blank" alt="BorealOS Web"
                             href="http://www.borealos.com">BorealOS 2017</a>
                     </div>
 
-                    <div class="col-12 col-sm-4">
+                    <div class="col-12 col-sm-6">
                         <span>Hora actual:</span>
                         <span id="reloj"></span>
                     </div>

@@ -16,9 +16,6 @@ body {
 
 .cabecera {
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   background-color: #342a21;
   top: 0;
   position: fixed;
@@ -26,6 +23,15 @@ body {
   padding-bottom: 17px;
   z-index: 2;
   height: 140px;
+}
+
+.cabecera > div {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .cabecera h1 {
@@ -96,7 +102,7 @@ body {
 
 .btnCss {
   padding: 10px;
-  width: 80px;
+  width: 55px;
   height: 50px;
   color: #fce2c7;
   border-radius: 5px;
@@ -207,21 +213,136 @@ body {
   text-decoration: underline;
 }
 
+/* Off canvas Menu opciones */
+.offcanvas {
+  background-color: #342a21 !important;
+  color: #a0906f;
+}
+
+.offcanvas-start {
+  width: 450px !important;
+}
+
+.resetBtn {
+  font-size: 20px;
+  float: right;
+  cursor: pointer;
+}
+.menu-options {
+  margin-bottom: 12px;
+  line-height: 20px;
+}
+.btn-close-menu {
+  color: #a0906f !important;
+}
+.btn-close-menu:hover {
+  color: #a0906f !important;
+  cursor: pointer;
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  border-radius: 5px;
+}
+input[type="range"]:focus {
+  outline: none;
+}
+/* fondo slider horizontal */
+input[type="range"]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 10px;
+  cursor: pointer;
+  animate: 0.2s;
+  background: #a0906f;
+  border-radius: 5px;
+}
+/* bolita */
+input[type="range"]::-webkit-slider-thumb {
+  box-shadow: 1px 1px 1px #342a21;
+  border: 1px solid #342a21;
+  height: 20px;
+  width: 20px;
+  border-radius: 50px;
+  background: #a0906f;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -5px;
+}
+input[type="range"]:focus::-webkit-slider-runnable-track {
+  /* background: #3071a9; */
+}
+input[type="range"]::-moz-range-track {
+  width: 100%;
+  height: 10px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 1px 1px 1px #000000;
+  background: #3071a9;
+  border-radius: 5px;
+  border: 1px solid #000000;
+}
+input[type="range"]::-moz-range-thumb {
+  box-shadow: 1px 1px 1px #000000;
+  border: 1px solid #000000;
+  height: 30px;
+  width: 15px;
+  border-radius: 5px;
+  background: #ffffff;
+  cursor: pointer;
+}
+input[type="range"]::-ms-track {
+  width: 100%;
+  height: 10px;
+  cursor: pointer;
+  animate: 0.2s;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+input[type="range"]::-ms-fill-lower {
+  background: #3071a9;
+  border: 1px solid #000000;
+  border-radius: 10px;
+  box-shadow: 1px 1px 1px #000000;
+}
+input[type="range"]::-ms-fill-upper {
+  background: #3071a9;
+  border: 1px solid #000000;
+  border-radius: 10px;
+  box-shadow: 1px 1px 1px #000000;
+}
+input[type="range"]::-ms-thumb {
+  margin-top: 1px;
+  box-shadow: 1px 1px 1px #000000;
+  border: 1px solid #000000;
+  height: 30px;
+  width: 15px;
+  border-radius: 5px;
+  background: #ffffff;
+  cursor: pointer;
+}
+
 /* tictac sound on/off */
 
-.tic-tac-on-off-position {
+.options-icon-position {
   position: absolute;
-  top: 0;
-  right: 20px;
+  top: -6px;
+  left: 20px;
   color: #a0906f;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-size: 26px;
+  cursor: pointer;
+}
+
+.options-icon-position:hover {
+  color: #a0906f;
 }
 
 .tictacStyle {
-  font-size: 25px !important;
+  font-size: 24px !important;
   cursor: pointer;
 }
 
@@ -229,11 +350,12 @@ body {
   .contador {
     font-size: 75px;
   }
-  .tic-tac-on-off-position {
+  .options-icon-position {
     position: relative;
-    padding: 0px;
-    padding-top: 10px;
-    right: 0;
+    width: 100%;
+    align-items: flex-start;
+    top: 0;
+    left: 10px;
   }
   .cabecera h1 {
     font-size: 35px;
@@ -254,6 +376,9 @@ body {
     height: 35px;
     background-size: 18px 18px;
   }
+  .menu-options {
+    margin-bottom: 25px;
+  }
 }
 
 @media screen and (max-width: 425px) {
@@ -273,5 +398,8 @@ body {
   }
   #cicloPomodoro {
     font-size: 16px;
+  }
+  .menu-options {
+    margin-bottom: 30px;
   }
 }
