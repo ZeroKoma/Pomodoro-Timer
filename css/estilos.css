@@ -158,8 +158,15 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   border-radius: 5px;
+  position: relative;
 }
 
+#barraEstado1 svg,
+#barraEstado2 svg,
+#barraEstado3 svg,
+#barraEstado4 svg {
+  display: none;
+}
 /* B T N   A L A R M A  */
 
 #btnAlarma {

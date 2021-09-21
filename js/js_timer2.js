@@ -52,8 +52,8 @@ function iniciaPantalla() {
   estadoStop = false;
   document.getElementById("minutos").innerHTML = "00";
   document.getElementById("segundos").innerHTML = "00";
-  document.getElementById("btnInicio").style.border = "3px solid #A0906F";
-  document.getElementById("btnPausa").style.border = "3px solid #A0906F";
+  document.getElementById("btnInicio").style.border = "2px solid #A0906F";
+  document.getElementById("btnPausa").style.border = "2px solid #A0906F";
   document.getElementById("btnStop").style.border = "1px solid #A0906F";
   document.getElementById("barraEstado1").style.backgroundImage =
     "url('./img/faviconGris.png')";
@@ -64,9 +64,13 @@ function iniciaPantalla() {
   document.getElementById("barraEstado4").style.backgroundImage =
     "url('./img/faviconGris.png')";
   document.getElementById("barraEstado1").style.border = "1px solid #A0906F";
+  document.getElementById("svg-barraEstado1").style.display = "none";
   document.getElementById("barraEstado2").style.border = "1px solid #A0906F";
+  document.getElementById("svg-barraEstado2").style.display = "none";
   document.getElementById("barraEstado3").style.border = "1px solid #A0906F";
+  document.getElementById("svg-barraEstado3").style.display = "none";
   document.getElementById("barraEstado4").style.border = "1px solid #A0906F";
+  document.getElementById("svg-barraEstado4").style.display = "none";
 }
 
 // muestra en pantalla estado crono: trabajando, descansando o parado.
@@ -157,26 +161,30 @@ function controlador(datoSeg, datoMin) {
   }
 }
 
-// Dibuja los pomodoros. Antes de un ciclo (prePintaCiclo) pinta borde mas fuerte. Ciclo acabado pinta pomodoro rojo.
+// Dibuja los pomodoros. Antes de un ciclo (prePintaCiclo) pinta pomodoro rojo. Ciclo acabado pinta borde 2px y svg.
 /* P I N T A   C I C L O */
 function pintaCiclo(dato) {
   if (dato != 0 && dato <= 4) {
     switch (dato) {
       case 1:
-        document.getElementById("barraEstado1").style.backgroundImage =
-          "url('./img/favicon.png')";
+        document.getElementById("barraEstado1").style.border =
+          "2px solid #A0906F";
+        document.getElementById("svg-barraEstado1").style.display = "block";
         break;
       case 2:
-        document.getElementById("barraEstado2").style.backgroundImage =
-          "url('./img/favicon.png')";
+        document.getElementById("barraEstado2").style.border =
+          "2px solid #A0906F";
+        document.getElementById("svg-barraEstado2").style.display = "block";
         break;
       case 3:
-        document.getElementById("barraEstado3").style.backgroundImage =
-          "url('./img/favicon.png')";
+        document.getElementById("barraEstado3").style.border =
+          "2px solid #A0906F";
+        document.getElementById("svg-barraEstado3").style.display = "block";
         break;
       case 4:
-        document.getElementById("barraEstado4").style.backgroundImage =
-          "url('./img/favicon.png')";
+        document.getElementById("barraEstado4").style.border =
+          "2px solid #A0906F";
+        document.getElementById("svg-barraEstado4").style.display = "block";
         break;
     }
   }
@@ -188,23 +196,27 @@ function prePintaCiclo(dato) {
     switch (dato) {
       case 0:
         document.getElementById("barraEstado1").style.border =
-          "3px solid #A0906F";
-
+          "2px solid #A0906F";
+        document.getElementById("barraEstado1").style.backgroundImage =
+          "url('./img/favicon.png')";
         break;
       case 1:
         document.getElementById("barraEstado2").style.border =
-          "3px solid #A0906F";
-
+          "2px solid #A0906F";
+        document.getElementById("barraEstado2").style.backgroundImage =
+          "url('./img/favicon.png')";
         break;
       case 2:
         document.getElementById("barraEstado3").style.border =
-          "3px solid #A0906F";
-
+          "2px solid #A0906F";
+        document.getElementById("barraEstado3").style.backgroundImage =
+          "url('./img/favicon.png')";
         break;
       case 3:
         document.getElementById("barraEstado4").style.border =
-          "3px solid #A0906F";
-
+          "2px solid #A0906F";
+        document.getElementById("barraEstado4").style.backgroundImage =
+          "url('./img/favicon.png')";
         break;
     }
   }
@@ -277,7 +289,7 @@ function tictac() {
 // Texto con ciclo actual en trabajo o descansando
 function indicaCicloTxt(dato) {
   let x = document.getElementById("cicloPomodoro");
-  x.innerHTML = "En Pomodoro " + (ciclo + 1) + " de 4";
+  x.innerHTML = "Pomodoro " + (ciclo + 1) + " de 4";
 }
 
 // Envia notificacion al desktop al sonar la alarma
