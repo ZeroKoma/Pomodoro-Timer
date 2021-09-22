@@ -226,6 +226,43 @@ body {
 }
 
 /* Off canvas Menu opciones */
+.accordion-body,
+.accordion-header,
+.accordion-button,
+.accordion-item {
+  background-color: #342a21 !important;
+  color: #a0906f !important;
+}
+.offcanvas-body {
+  overflow-y: hidden !important;
+}
+.accordion-header button:focus {
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  outline: 0;
+}
+.accordion-button:not(.collapsed)::after {
+  display: inline-block;
+  content: "";
+  vertical-align: -0.125em;
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%23a0906f" class="bi bi-caret-down-fill" viewBox="0 0 16 16"><path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></svg>') !important;
+}
+.accordion-button::after {
+  display: inline-block;
+  content: "";
+  vertical-align: -0.125em;
+  color: #a0906f !important;
+  background-size: 26px 26px;
+  width: 26px;
+  height: 26px;
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%23a0906f" class="bi bi-caret-down-fill" viewBox="0 0 16 16"><path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></svg>') !important;
+}
+.accordion-item {
+  border: none;
+}
+.accordion-button {
+  padding: 0.5rem 0rem !important;
+}
 .offcanvas {
   background-color: #342a21 !important;
   color: #a0906f;
@@ -236,7 +273,6 @@ body {
 }
 
 .resetBtn {
-  font-size: 20px;
   float: right;
   cursor: pointer;
 }

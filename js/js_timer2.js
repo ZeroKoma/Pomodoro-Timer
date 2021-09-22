@@ -19,14 +19,12 @@ let minutos = 0;
 let stop = true; //si se pulsa btn Stop se inicializa todo
 let title = "Pomodoro Timer:";
 let options = { body: "Alarma disparada!" };
-let tictacOnVolume = 1; // sonido tictac reloj apagado=0 volumen=1 +volumen=2
-let alarmVolume = 1; // idem tictacOnVolume
+let tictacOnVolume = 0; // volumen tictac
+let alarmVolume = 2; // idem alarma
+let fondoVolume = 0; // idem white noise background
 
 function pedirPermiso() {
-  Notification.requestPermission().then(function (result) {
-    console.log("Permiso para notificaciones: ", result);
-    console.log("Notification.permission === ", Notification.permission);
-  });
+  Notification.requestPermission().then(function (result) {});
 }
 
 function myClock() {
@@ -250,42 +248,67 @@ function alarma() {
   estadoPlay = true;
   estadoPause = false;
   estadoStop = true;
+  stopFondo();
   let audio = document.getElementById("audio1");
   audio.loop = true;
-  switch (alarmVolume) {
-    case 0:
-      audio.volume = 0;
-      break;
-    case 1:
-      audio.volume = 0.1;
-      break;
-    case 2:
-      audio.volume = 0.4;
-      break;
-  }
+  let volume = alarmVolume / 10;
+  audio.volume = volume;
+  // switch (alarmVolume) {
+  //   case 0:
+  //     audio.volume = 0;
+  //     break;
+  //   case 1:
+  //     audio.volume = 0.1;
+  //     break;
+  //   case 2:
+  //     audio.volume = 0.4;
+  //     break;
+  // }
   audio.play();
   document
     .getElementById("btnAlarma")
     .addEventListener("click", function pararAlarma() {
       audio.volume = 0;
+      audio.pause();
+      audio.currentTime = 0;
       audio.loop = false;
     });
 }
 
 function tictac() {
   let audio = document.getElementById("audio2");
-  switch (tictacOnVolume) {
-    case 0:
-      audio.volume = 0;
-      break;
-    case 1:
-      audio.volume = 0.1;
-      break;
-    case 2:
-      audio.volume = 0.5;
-      break;
-  }
+  audio.volume = tictacOnVolume / 10;
+  // switch (tictacOnVolume) {
+  //   case 0:
+  //     audio.volume = 0;
+  //     break;
+  //   case 1:
+  //     audio.volume = 0.1;
+  //     break;
+  //   case 2:
+  //     audio.volume = 0.5;
+  //     break;
+  // }
   audio.play();
+}
+
+// background sound/music
+function playFondo() {
+  let audio = document.getElementById("audio3");
+  audio.volume = fondoVolume / 10;
+  audio.loop = true;
+  audio.play();
+}
+
+function stopFondo() {
+  let audio = document.getElementById("audio3");
+  audio.pause();
+  audio.currentTime = 0;
+}
+
+function pauseFondo() {
+  let audio = document.getElementById("audio3");
+  audio.pause();
 }
 
 // Texto con ciclo actual en trabajo o descansando
@@ -296,9 +319,8 @@ function indicaCicloTxt(dato) {
 
 // Envia notificacion al desktop al sonar la alarma
 function notifyMe(title, options) {
-  console.log("Notification.permission === ", Notification.permission);
   if (!("Notification" in window)) {
-    console.log("Este navegador que estas usando no soporta notificaciones.");
+    alert("Este navegador que estas usando no soporta notificaciones.");
   } else if (Notification.permission === "granted") {
     // If it's okay let's create a notification
     new Notification(title, options);
@@ -311,20 +333,40 @@ function notifyMe(title, options) {
   }
 }
 
+function changeFondoVolume(userVolume) {
+  fondoVolume = userVolume;
+  let audio = document.getElementById("audio3");
+  audio.volume = fondoVolume / 10;
+  audio.loop = true;
+  audio.play();
+  switch (true) {
+    case userVolume > 0 && userVolume < 6:
+      document.getElementById("fondoVolumeIcon").className =
+        "bi bi-volume-down-fill tictacStyle";
+      break;
+    case userVolume > 6:
+      document.getElementById("fondoVolumeIcon").className =
+        "bi bi-volume-up-fill tictacStyle";
+      break;
+    case userVolume == 0:
+      document.getElementById("fondoVolumeIcon").className =
+        "bi bi-volume-mute-fill tictacStyle";
+      break;
+  }
+}
+
 function changeTicTacVolume(userVolume) {
-  switch (userVolume) {
-    case "1":
-      tictacOnVolume = 1;
+  tictacOnVolume = userVolume;
+  switch (true) {
+    case userVolume > 0 && userVolume < 6:
       document.getElementById("tictacVolumeIcon").className =
         "bi bi-volume-down-fill tictacStyle";
       break;
-    case "2":
-      tictacOnVolume = 2;
+    case userVolume > 6:
       document.getElementById("tictacVolumeIcon").className =
         "bi bi-volume-up-fill tictacStyle";
       break;
-    case "0":
-      tictacOnVolume = 0;
+    case userVolume == 0:
       document.getElementById("tictacVolumeIcon").className =
         "bi bi-volume-mute-fill tictacStyle";
       break;
@@ -332,19 +374,17 @@ function changeTicTacVolume(userVolume) {
 }
 
 function changeAlarmVolume(userVolume) {
-  switch (userVolume) {
-    case "1":
-      alarmVolume = 1;
+  alarmVolume = userVolume;
+  switch (true) {
+    case userVolume > 0 && userVolume < 6:
       document.getElementById("alarmVolumeIcon").className =
         "bi bi-volume-down-fill tictacStyle";
       break;
-    case "2":
-      alarmVolume = 2;
+    case userVolume > 6:
       document.getElementById("alarmVolumeIcon").className =
         "bi bi-volume-up-fill tictacStyle";
       break;
-    case "0":
-      alarmVolume = 0;
+    case userVolume == 0:
       document.getElementById("alarmVolumeIcon").className =
         "bi bi-volume-mute-fill tictacStyle";
       break;
@@ -413,6 +453,7 @@ function iniciar() {
             estadoPause = true;
             estadoStop = true;
             crono(segundos, minutos);
+            playFondo();
           }
         }
       }
@@ -433,6 +474,7 @@ function iniciar() {
         estadoPlay = true;
         estadoPause = false;
         estadoStop = true;
+        pauseFondo();
       }
     });
 
@@ -447,6 +489,7 @@ function iniciar() {
       let x = document.getElementById("cicloPomodoro");
       x.innerHTML = "Pomodoros:";
       stop = true;
+      stopFondo();
     }
   });
 
@@ -484,13 +527,18 @@ function iniciar() {
   document
     .getElementById("volumeResetBtn")
     .addEventListener("click", function () {
-      tictacOnVolume = 1;
-      alarmVolume = 1;
+      tictacOnVolume = 0;
+      alarmVolume = 2;
+      fondoVolume = 0;
       document.getElementById("alarmVolumeIcon").className =
         "bi bi-volume-down-fill tictacStyle";
-      document.getElementById("alarmVolumeSlider").value = tictacOnVolume;
+      document.getElementById("alarmVolumeSlider").value = alarmVolume;
       document.getElementById("tictacVolumeIcon").className =
         "bi bi-volume-down-fill tictacStyle";
-      document.getElementById("ticTacVolumeSlider").value = alarmVolume;
+      document.getElementById("ticTacVolumeSlider").value = tictacOnVolume;
+      document.getElementById("fondoVolumeIcon").className =
+        "bi bi-volume-down-fill tictacStyle";
+      document.getElementById("fondoVolumeSlider").value = fondoVolume;
+      playFondo();
     });
 } // fin corchete funcion iniciar

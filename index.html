@@ -23,43 +23,92 @@
                         class="bi bi-x-lg"></i></div>
             </div>
             <div class="offcanvas-body">
-                <div class="fw-bold">Tiempos:<i id="timeResetBtn" title="Resetear tiempos"
-                        class="bi bi-arrow-counterclockwise resetBtn"></i>
-                </div>
-                <div class="mb-4 mt-1" style="width: 100%;  border: 1px solid #a0906f; "></div>
-                <div class="d-flex flex-row align-items-center menu-options">
-                    <span>Trabajo:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                    <input id="wrkTimeSlider" class="mx-2" type="range" min="25" max="120" step="5" value=25
-                        oninput="changeWkrTime(this.value)">
-                    <div id="tiempoDeTrabajo"></div>
-                </div>
-                <div class="d-flex flex-row align-items-center menu-options">
-                    <span>Descanso:&nbsp;&nbsp;</span>
-                    <input id="wrkPauseSlider" class="mx-2" type="range" min="5" max="30" step="5" value=5
-                        oninput="changeWkrPause(this.value)">
-                    <div id="tiempoDeDescanso"></div>
-                </div>
-                <div class="d-flex flex-row align-items-center menu-options">
-                    <span>Último Descanso:&nbsp;&nbsp;</span>
-                    <input id="lastPauseSlider" class="mx-2" type="range" min="5" max="60" step="5" value=25
-                        oninput="changeWkrLastPause(this.value)">
-                    <div id="tiempoUltimoDescanso"></div>
-                </div>
-                <div class="fw-bold mt-4">Volumen:<i id="volumeResetBtn" title="Resetear volumen"
-                        class="bi bi-arrow-counterclockwise resetBtn"></i>
-                </div>
-                <div class="mb-4 mt-1" style="width: 100%;  border: 1px solid #a0906f; "></div>
-                <div class=" d-flex flex-row align-items-center menu-options">
-                    <span>Tic-tac:&nbsp;&nbsp;&nbsp;</span>
-                    <input id="ticTacVolumeSlider" class="mx-2" type="range" min="0" max="2" step="1"
-                        oninput="changeTicTacVolume(this.value)">
-                    <i id="tictacVolumeIcon" class="bi bi-volume-down-fill tictacStyle"></i>
-                </div>
-                <div class="d-flex flex-row align-items-center menu-options">
-                    <span>Alarma:&nbsp;&nbsp;</span>
-                    <input id="alarmVolumeSlider" class="mx-2" type="range" min="0" max="2" step="1"
-                        oninput="changeAlarmVolume(this.value)">
-                    <i id="alarmVolumeIcon" class="bi bi-volume-down-fill tictacStyle"></i>
+                <div class="accordion" id="accordionExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                Tiempos
+                            </button>
+                        </h2>
+                        <div class="mb-2 mt-0" style="width: 100%;  border: 1px solid #a0906f; "></div>
+                        <div id="collapseOne" class="accordion-collapse collapse " aria-labelledby="headingOne"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <div class="d-flex flex-row align-items-center menu-options">
+                                    <span>Trabajo:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                    <input id="wrkTimeSlider" class="mx-2" type="range" min="25" max="120" step="5"
+                                        value=25 oninput="changeWkrTime(this.value)">
+                                    <div id="tiempoDeTrabajo"></div>
+                                </div>
+                                <div class="d-flex flex-row align-items-center menu-options">
+                                    <span>Descanso:&nbsp;&nbsp;</span>
+                                    <input id="wrkPauseSlider" class="mx-2" type="range" min="5" max="30" step="5"
+                                        value=5 oninput="changeWkrPause(this.value)">
+                                    <div id="tiempoDeDescanso"></div>
+                                </div>
+                                <div class="d-flex flex-row align-items-center menu-options">
+                                    <span>Último Descanso:&nbsp;&nbsp;</span>
+                                    <input id="lastPauseSlider" class="mx-2" type="range" min="5" max="60" step="5"
+                                        value=25 oninput="changeWkrLastPause(this.value)">
+                                    <div id="tiempoUltimoDescanso"></div>
+                                </div>
+                                <div id="timeResetBtn" class="fw-bold resetBtn mb-2">Reset&nbsp;<i
+                                        title="Resetear tiempos" class="bi bi-arrow-counterclockwise "></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Volumen
+                            </button>
+                        </h2>
+                        <div class="mb-2 mt-0" style="width: 100%;  border: 1px solid #a0906f; "></div>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <div class=" d-flex flex-row align-items-center menu-options">
+                                    <span>Tic-tac:&nbsp;&nbsp;&nbsp;</span>
+                                    <input id="ticTacVolumeSlider" class="mx-2" type="range" min="0" max="10" step="1"
+                                        value="0" oninput="changeTicTacVolume(this.value)">
+                                    <i id="tictacVolumeIcon" class="bi bi-volume-down-fill tictacStyle"></i>
+                                </div>
+                                <div class="d-flex flex-row align-items-center menu-options">
+                                    <span>Alarma:&nbsp;&nbsp;</span>
+                                    <input id="alarmVolumeSlider" class="mx-2" type="range" min="0" max="10" step="1"
+                                        value="2" oninput="changeAlarmVolume(this.value)">
+                                    <i id="alarmVolumeIcon" class="bi bi-volume-down-fill tictacStyle"></i>
+                                </div>
+                                <div class="d-flex flex-row align-items-center menu-options">
+                                    <span>Fondo:&nbsp;&nbsp;&nbsp;</span>
+                                    <input id="fondoVolumeSlider" class="mx-2" type="range" min="0" max="10" step="1"
+                                        value="0" oninput="changeFondoVolume(this.value)">
+                                    <i id="fondoVolumeIcon" class="bi bi-volume-down-fill tictacStyle"></i>
+                                </div>
+                                <div id="volumeResetBtn" class="fw-bold resetBtn mb-2">Reset&nbsp;<i
+                                        title="Resetear volumen" class="bi bi-arrow-counterclockwise "></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                Sonidos
+                            </button>
+                        </h2>
+                        <div class="mb-2 mt-0" style="width: 100%;  border: 1px solid #a0906f; "></div>
+                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -111,6 +160,10 @@
             </audio>
             <audio id="audio2">
                 <source src="sounds/clock-tick1.wav" type="audio/wav">
+                Tu navegador no soporta audio
+            </audio>
+            <audio id="audio3">
+                <source src="sounds/bg-rain.mp3" type="audio/mp3">
                 Tu navegador no soporta audio
             </audio>
         </section>
