@@ -335,10 +335,11 @@ function notifyMe(title, options) {
 
 function changeFondoVolume(userVolume) {
   fondoVolume = userVolume;
+  document.getElementById("fondoValue").innerHTML = userVolume;
   let audio = document.getElementById("bgSoundTag");
   audio.volume = fondoVolume / 10;
   audio.loop = true;
-  if (ciclo != 0) audio.play();
+  if (stop === false) audio.play();
   switch (true) {
     case userVolume > 0 && userVolume < 6:
       document.getElementById("fondoVolumeIcon").className =
@@ -357,6 +358,7 @@ function changeFondoVolume(userVolume) {
 
 function changeTicTacVolume(userVolume) {
   tictacOnVolume = userVolume;
+  document.getElementById("ticTacValue").innerHTML = userVolume;
   switch (true) {
     case userVolume > 0 && userVolume < 6:
       document.getElementById("tictacVolumeIcon").className =
@@ -375,6 +377,7 @@ function changeTicTacVolume(userVolume) {
 
 function changeAlarmVolume(userVolume) {
   alarmVolume = userVolume;
+  document.getElementById("alarmValue").innerHTML = userVolume;
   switch (true) {
     case userVolume > 0 && userVolume < 6:
       document.getElementById("alarmVolumeIcon").className =
@@ -479,19 +482,21 @@ function iniciar() {
     });
 
   //btn stop
-  document.getElementById("btnStop").addEventListener("click", function stop() {
-    if (estadoStop) {
-      estadoPlay = true;
-      estadoPause = false;
-      estadoStop = false;
-      document.title = "Pomodoro Timer";
-      iniciaPantalla();
-      let x = document.getElementById("cicloPomodoro");
-      x.innerHTML = "Pomodoros:";
-      stop = true;
-      stopFondo();
-    }
-  });
+  document
+    .getElementById("btnStop")
+    .addEventListener("click", function stopFn() {
+      if (estadoStop) {
+        estadoPlay = true;
+        estadoPause = false;
+        estadoStop = false;
+        document.title = "Pomodoro Timer";
+        iniciaPantalla();
+        let x = document.getElementById("cicloPomodoro");
+        x.innerHTML = "Pomodoros:";
+        stop = true;
+        stopFondo();
+      }
+    });
 
   // btn open menu
   document
@@ -530,16 +535,19 @@ function iniciar() {
       tictacOnVolume = 0;
       alarmVolume = 2;
       fondoVolume = 0;
+      document.getElementById("ticTacValue").innerHTML = tictacOnVolume;
+      document.getElementById("alarmValue").innerHTML = alarmVolume;
+      document.getElementById("fondoValue").innerHTML = fondoVolume;
       document.getElementById("alarmVolumeIcon").className =
         "bi bi-volume-down-fill tictacStyle";
       document.getElementById("alarmVolumeSlider").value = alarmVolume;
       document.getElementById("tictacVolumeIcon").className =
-        "bi bi-volume-down-fill tictacStyle";
+        "bi bi-volume-mute-fill tictacStyle";
       document.getElementById("ticTacVolumeSlider").value = tictacOnVolume;
       document.getElementById("fondoVolumeIcon").className =
-        "bi bi-volume-down-fill tictacStyle";
+        "bi bi-volume-mute-fill tictacStyle";
       document.getElementById("fondoVolumeSlider").value = fondoVolume;
-      playFondo();
+      stopFondo();
     });
 
   // checkbox alarma 1 and 2

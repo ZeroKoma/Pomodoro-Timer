@@ -72,21 +72,25 @@
                             <div class="accordion-body">
                                 <div class=" d-flex flex-row align-items-center menu-options">
                                     <span>Tic-tac:&nbsp;&nbsp;&nbsp;</span>
+                                    <i id="tictacVolumeIcon" class="bi bi-volume-mute-fill tictacStyle"></i>
                                     <input id="ticTacVolumeSlider" class="mx-2" type="range" min="0" max="10" step="1"
                                         value="0" oninput="changeTicTacVolume(this.value)">
-                                    <i id="tictacVolumeIcon" class="bi bi-volume-down-fill tictacStyle"></i>
+                                    <span id="ticTacValue" class="mx-2">0</span>
+
                                 </div>
                                 <div class="d-flex flex-row align-items-center menu-options">
                                     <span>Alarma:&nbsp;&nbsp;</span>
+                                    <i id="alarmVolumeIcon" class="bi bi-volume-down-fill tictacStyle"></i>
                                     <input id="alarmVolumeSlider" class="mx-2" type="range" min="0" max="10" step="1"
                                         value="2" oninput="changeAlarmVolume(this.value)">
-                                    <i id="alarmVolumeIcon" class="bi bi-volume-down-fill tictacStyle"></i>
+                                    <span id="alarmValue" class="mx-2">2</span>
                                 </div>
                                 <div class="d-flex flex-row align-items-center menu-options">
                                     <span>Fondo:&nbsp;&nbsp;&nbsp;</span>
+                                    <i id="fondoVolumeIcon" class="bi bi-volume-mute-fill tictacStyle"></i>
                                     <input id="fondoVolumeSlider" class="mx-2" type="range" min="0" max="10" step="1"
                                         value="0" oninput="changeFondoVolume(this.value)">
-                                    <i id="fondoVolumeIcon" class="bi bi-volume-down-fill tictacStyle"></i>
+                                    <span id="fondoValue" class="mx-2">0</span>
                                 </div>
                                 <div id="volumeResetBtn" class="fw-bold resetBtn mb-2">Reset&nbsp;<i
                                         title="Resetear volumen" class="bi bi-arrow-counterclockwise "></i>
