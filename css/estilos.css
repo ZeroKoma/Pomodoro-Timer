@@ -364,6 +364,22 @@ input[type="range"]::-ms-thumb {
   cursor: pointer;
 }
 
+.form-check-input:checked {
+  background-color: #a0906f !important;
+  border-color: #a0906f !important;
+}
+
+.form-check-input[type="radio"] {
+  background-color: #a0906f !important;
+  border-color: #a0906f !important;
+  border-radius: 5px !important;
+}
+
+.form-check-input:checked[type="radio"] {
+  background-image: url(../img/checkmark.svg) !important;
+  background-size: 10px 10px;
+}
+
 /* tictac sound on/off */
 
 .options-icon-position {

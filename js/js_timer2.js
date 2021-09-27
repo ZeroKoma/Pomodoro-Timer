@@ -249,7 +249,7 @@ function alarma() {
   estadoPause = false;
   estadoStop = true;
   stopFondo();
-  let audio = document.getElementById("audio1");
+  let audio = document.getElementById("alarmSoundTag");
   audio.loop = true;
   let volume = alarmVolume / 10;
   audio.volume = volume;
@@ -276,7 +276,7 @@ function alarma() {
 }
 
 function tictac() {
-  let audio = document.getElementById("audio2");
+  let audio = document.getElementById("ticTacSoundTag");
   audio.volume = tictacOnVolume / 10;
   // switch (tictacOnVolume) {
   //   case 0:
@@ -294,20 +294,20 @@ function tictac() {
 
 // background sound/music
 function playFondo() {
-  let audio = document.getElementById("audio3");
+  let audio = document.getElementById("bgSoundTag");
   audio.volume = fondoVolume / 10;
   audio.loop = true;
   audio.play();
 }
 
 function stopFondo() {
-  let audio = document.getElementById("audio3");
+  let audio = document.getElementById("bgSoundTag");
   audio.pause();
   audio.currentTime = 0;
 }
 
 function pauseFondo() {
-  let audio = document.getElementById("audio3");
+  let audio = document.getElementById("bgSoundTag");
   audio.pause();
 }
 
@@ -335,10 +335,10 @@ function notifyMe(title, options) {
 
 function changeFondoVolume(userVolume) {
   fondoVolume = userVolume;
-  let audio = document.getElementById("audio3");
+  let audio = document.getElementById("bgSoundTag");
   audio.volume = fondoVolume / 10;
   audio.loop = true;
-  audio.play();
+  if (ciclo != 0) audio.play();
   switch (true) {
     case userVolume > 0 && userVolume < 6:
       document.getElementById("fondoVolumeIcon").className =
@@ -541,4 +541,23 @@ function iniciar() {
       document.getElementById("fondoVolumeSlider").value = fondoVolume;
       playFondo();
     });
+
+  // checkbox alarma 1 and 2
+  document.getElementById("alarma1").addEventListener("click", function () {
+    let audio = document.getElementById("alarmSoundTag");
+    //audio.setAttribute("src", "sounds/alarma-2.mp3");
+
+    audio.src = "sounds/alarma-2.mp3";
+    audio.volume = 0.5;
+    audio.loop = false;
+    audio.play();
+  });
+  document.getElementById("alarma2").addEventListener("click", function () {
+    let audio = document.getElementById("alarmSoundTag");
+    //audio.setAttribute("scr", "sounds/campana.mp3");
+    audio.src = "sounds/campana.mp3";
+    audio.volume = 0.5;
+    audio.loop = false;
+    audio.play();
+  });
 } // fin corchete funcion iniciar
