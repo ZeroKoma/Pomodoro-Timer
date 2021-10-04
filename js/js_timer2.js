@@ -107,7 +107,7 @@ function crono(datoSeg, datoMin) {
   if (!stop)
     x = setTimeout(function () {
       crono(datoSeg, datoMin);
-    }, 1);
+    }, 1000);
 }
 
 // Cuando crono llega a cero tanto en tiempo de trabajo como de descanso
