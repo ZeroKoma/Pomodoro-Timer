@@ -7,18 +7,21 @@ let CicloTrabajo = true; // true si crono tiempo trabajo - false descanso
 let estadoPlay = true; // activa - desactiva botones
 let estadoPause = false;
 let estadoStop = false;
-timer_is_on = 0; // si crono parado o no. para btn pausa.
+let timer_is_on = 0; // si crono parado o no. para btn pausa.
 let ciclo = 0; // nº de pomodoros
 let wrkTime = 24; // 25 min de estudio/trabajo
 let wrkPause = 4; // 5 min de descanso
 let lastPause = 24; // último descanso al acabar los 4 pomodoros
-let estadoCrono = "Parado"; // string pantalla indica trabajo o descanso
+let language = "spanish"; // string: 'spanish', 'english'
+let chronometerState = `${language === "spanish" ? "Parado" : "Stopped"}`; // string pantalla indica trabajo o descanso
 let x; // aux para crono
 let segundos = 60;
 let minutos = 0;
 let stop = true; //si se pulsa btn Stop se inicializa todo
 let title = "Pomodoro Timer:";
-let options = { body: "Alarma disparada!" };
+let options = {
+  body: `${language === "spanish" ? "Alarma disparada!" : "alarm triggered!"}`,
+};
 let tictacOnVolume = 0; // volumen tictac
 let alarmVolume = 2; // idem alarma
 let fondoVolume = 0; // idem white noise background
@@ -35,8 +38,8 @@ function myClock() {
 function iniciaPantalla() {
   if (!isMobile()) pedirPermiso();
   fin4Pomodoros = false;
-  estadoCrono = "<b>Parado</b>";
-  muestraEstado(estadoCrono);
+  chronometerState = `<b>${language === "spanish" ? "Parado" : "Stopped"} </b>`;
+  muestraEstado(chronometerState);
   clearTimeout(x);
   timer_is_on = 0;
   CicloTrabajo = true;
@@ -73,8 +76,8 @@ function iniciaPantalla() {
 
 // muestra en pantalla estado crono: trabajando, descansando o parado.
 function muestraEstado(dato) {
-  document.getElementById("estadoCrono").style.textAlign = "center";
-  document.getElementById("estadoCrono").innerHTML = dato;
+  document.getElementById("chronometerState").style.textAlign = "center";
+  document.getElementById("chronometerState").innerHTML = dato;
 }
 
 // C R O N O
@@ -104,7 +107,7 @@ function crono(datoSeg, datoMin) {
   if (!stop)
     x = setTimeout(function () {
       crono(datoSeg, datoMin);
-    }, 1000);
+    }, 1);
 }
 
 // Cuando crono llega a cero tanto en tiempo de trabajo como de descanso
@@ -131,8 +134,10 @@ function controlador(datoSeg, datoMin) {
       segundos = 59;
       timer_is_on = 0;
       CicloTrabajo = false;
-      estadoCrono = "Play para iniciar descanso";
-      muestraEstado(estadoCrono);
+      chronometerState = `${
+        language ? "Play para iniciar descanso" : "Play to start break"
+      }`;
+      muestraEstado(chronometerState);
       document.getElementById("btnInicio").style.border = "3px solid #A0906F";
       document.getElementById("btnPausa").style.border = "3px solid #A0906F";
       document.getElementById("btnStop").style.border = "1px solid #A0906F";
@@ -148,8 +153,12 @@ function controlador(datoSeg, datoMin) {
         timer_is_on = 0;
         minutos = wrkTime;
         segundos = 59;
-        estadoCrono = "Play para iniciar pomodoro " + (ciclo + 1);
-        muestraEstado(estadoCrono);
+        chronometerState =
+          `${
+            language ? "Play para iniciar Pomodoro " : "Play to start Pomodoro "
+          }` +
+          (ciclo + 1);
+        muestraEstado(chronometerState);
         document.getElementById("btnInicio").style.border = "3px solid #A0906F";
         document.getElementById("btnPausa").style.border = "3px solid #A0906F";
         document.getElementById("btnStop").style.border = "1px solid #A0906F";
@@ -222,8 +231,12 @@ function prePintaCiclo(dato) {
 
 // Se acaba ciclo de 4 pomodoros
 function finCuatroCiclos() {
-  estadoCrono = "Has finalizado los 4 pomodoros!";
-  muestraEstado(estadoCrono);
+  chronometerState = `${
+    language
+      ? "Has finalizado los 4 pomodoros!"
+      : "You have finished all 4 pomodoros!"
+  }`;
+  muestraEstado(chronometerState);
   clearTimeout(x);
   timer_is_on = 0;
   stop = true;
@@ -241,7 +254,7 @@ function finCuatroCiclos() {
 
 // alarma
 function alarma() {
-  var myModal = new bootstrap.Modal(document.getElementById("exampleModal"), {
+  var myModal = new bootstrap.Modal(document.getElementById("alarmaModal"), {
     keyboard: false,
   });
   myModal.show();
@@ -314,13 +327,19 @@ function pauseFondo() {
 // Texto con ciclo actual en trabajo o descansando
 function indicaCicloTxt(dato) {
   let x = document.getElementById("cicloPomodoro");
-  x.innerHTML = "Pomodoro " + (ciclo + 1) + " de 4";
+  x.innerHTML = "Pomodoro " + (ciclo + 1) + " / 4";
 }
 
 // Envia notificacion al desktop al sonar la alarma
 function notifyMe(title, options) {
   if (!("Notification" in window)) {
-    alert("Este navegador que estas usando no soporta notificaciones.");
+    alert(
+      `${
+        language
+          ? "Este navegador que estas usando no soporta notificaciones."
+          : "This browser you are using does not support notifications."
+      }`
+    );
   } else if (Notification.permission === "granted") {
     // If it's okay let's create a notification
     new Notification(title, options);
@@ -432,12 +451,20 @@ function iniciar() {
             timer_is_on = 1;
             /*segundos = 59;*/
             if (CicloTrabajo) {
-              estadoCrono = "En Pomodoro " + (ciclo + 1) + " - Trabajando";
+              chronometerState = `${
+                language
+                  ? "En Pomodoro " + (ciclo + 1) + " - Trabajando"
+                  : "In Pomodoro " + (ciclo + 1) + " - Working"
+              }`;
               if (stop == true) {
                 minutos = wrkTime;
               }
             } else {
-              estadoCrono = "En Pomodoro " + (ciclo + 1) + " - Descansando";
+              chronometerState = `${
+                language
+                  ? "En Pomodoro " + (ciclo + 1) + " - Descansando"
+                  : "In Pomodoro " + (ciclo + 1) + " - Break"
+              }`;
               if (stop == true) {
                 minutos = ciclo > 2 ? lastPause : wrkPause;
               }
@@ -449,7 +476,7 @@ function iniciar() {
               "3px solid #A0906F";
             document.getElementById("btnStop").style.border =
               "3px solid #A0906F";
-            muestraEstado(estadoCrono);
+            muestraEstado(chronometerState);
             prePintaCiclo(ciclo);
             indicaCicloTxt(ciclo);
             estadoPlay = false;
@@ -469,11 +496,13 @@ function iniciar() {
       if (estadoPause) {
         clearTimeout(x);
         timer_is_on = 0;
-        estadoCrono = "<b>En Pausa</b>";
+        chronometerState = `${
+          language === "spanish" ? "<b>En Pausa</b>" : "<b>Pause</b>"
+        }`;
         document.getElementById("btnInicio").style.border = "3px solid #A0906F";
         document.getElementById("btnPausa").style.border = "1px solid #A0906F";
         document.getElementById("btnStop").style.border = "3px solid #A0906F";
-        muestraEstado(estadoCrono);
+        muestraEstado(chronometerState);
         estadoPlay = true;
         estadoPause = false;
         estadoStop = true;
@@ -568,4 +597,55 @@ function iniciar() {
     audio.loop = false;
     audio.play();
   });
+
+  // checkbox language
+  document
+    .getElementById("spanishLanguage")
+    .addEventListener("click", function () {
+      console.log("click en español box");
+      setLanguage("spanish");
+      // document.getElementById("menu-tiempos").innerHTML = "Tiempos";
+      // document.getElementById(
+      //   "menu-trabajo"
+      // ).innerHTML = `Trabajo:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`;
+      // document.getElementById(
+      //   "menu-descando"
+      // ).innerHTML = `Descanso:&nbsp;&nbsp;`;
+      // document.getElementById(
+      //   "menu-ultimo-descanso"
+      // ).innerHTML = `Último Descanso:&nbsp;&nbsp;`;
+      // document.getElementById("menu-volume").innerHTML = "Volumen";
+      // document.getElementById("menu-alarma").innerHTML = "Alarma:&nbsp;&nbsp;";
+      // document.getElementById("menu-bg").innerHTML = "Fondo:&nbsp;&nbsp;&nbsp;";
+      // document.getElementById("menu-sounds").innerHTML = "Sonidos";
+      // document.getElementById("menu-soft-alarm").innerHTML = "Alarma Suave";
+      // document.getElementById("menu-bell-alarm").innerHTML = "Alarma Campana";
+      // document.getElementById("menu-language").innerHTML = "Idioma";
+      // document.getElementById("menu-spanish").innerHTML = "Español";
+      // document.getElementById("menu-english").innerHTML = "Inglés";
+      // document.getElementById("current-time").innerHTML = "Hora actual:";
+    });
+  document
+    .getElementById("englishLanguage")
+    .addEventListener("click", function () {
+      console.log("click en english box");
+      setLanguage("english");
+      // document.getElementById("menu-tiempos").innerHTML = "Time";
+      // document.getElementById("menu-trabajo").innerHTML = "Work:";
+      // document.getElementById("menu-descando").innerHTML = "Rest:&nbsp;&nbsp;";
+      // document.getElementById("menu-ultimo-descanso").innerHTML =
+      //   "Last Rest:&nbsp;&nbsp;";
+      // document.getElementById("menu-volume").innerHTML = "Volume";
+      // document.getElementById("menu-alarma").innerHTML =
+      //   "Alarm:&nbsp;&nbsp;&nbsp;&nbsp;";
+      // document.getElementById("menu-bg").innerHTML =
+      //   "Background:&nbsp;&nbsp;&nbsp;&nbsp;";
+      // document.getElementById("menu-sounds").innerHTML = "Sounds";
+      // document.getElementById("menu-soft-alarm").innerHTML = "Soft Alarm";
+      // document.getElementById("menu-bell-alarm").innerHTML = "Bell Alarm";
+      // document.getElementById("menu-language").innerHTML = "Language";
+      // document.getElementById("menu-spanish").innerHTML = "Spanish";
+      // document.getElementById("menu-english").innerHTML = "English";
+      // document.getElementById("current-time").innerHTML = "Current Time:";
+    });
 } // fin corchete funcion iniciar

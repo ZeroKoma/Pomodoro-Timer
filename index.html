@@ -26,29 +26,30 @@
                 <div class="accordion" id="accordionLateralMenu">
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingOne">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                            <button id="menu-tiempos" class="accordion-button collapsed" type="button"
+                                data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false"
+                                aria-controls="collapseOne">
                                 Tiempos
                             </button>
                         </h2>
                         <div class="mb-2 mt-0" style="width: 100%;  border: 1px solid #a0906f; "></div>
-                        <div id="collapseOne" class="accordion-collapse collapse " aria-labelledby="headingOne"
+                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
                             data-bs-parent="#accordionLateralMenu">
                             <div class="accordion-body">
                                 <div class="d-flex flex-row align-items-center menu-options">
-                                    <span>Trabajo:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                    <span id="menu-trabajo">Trabajo:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                                     <input id="wrkTimeSlider" class="mx-2" type="range" min="25" max="120" step="5"
                                         value=25 oninput="changeWkrTime(this.value)">
                                     <div id="tiempoDeTrabajo"></div>
                                 </div>
                                 <div class="d-flex flex-row align-items-center menu-options">
-                                    <span>Descanso:&nbsp;&nbsp;</span>
+                                    <span id="menu-descando">Descanso:&nbsp;&nbsp;</span>
                                     <input id="wrkPauseSlider" class="mx-2" type="range" min="5" max="30" step="5"
                                         value=5 oninput="changeWkrPause(this.value)">
                                     <div id="tiempoDeDescanso"></div>
                                 </div>
                                 <div class="d-flex flex-row align-items-center menu-options">
-                                    <span>Último Descanso:&nbsp;&nbsp;</span>
+                                    <span id="menu-ultimo-descanso">Último Descanso:&nbsp;&nbsp;</span>
                                     <input id="lastPauseSlider" class="mx-2" type="range" min="5" max="60" step="5"
                                         value=25 oninput="changeWkrLastPause(this.value)">
                                     <div id="tiempoUltimoDescanso"></div>
@@ -61,8 +62,9 @@
                     </div>
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingTwo">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            <button id="menu-volume" class="accordion-button collapsed" type="button"
+                                data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false"
+                                aria-controls="collapseTwo">
                                 Volumen
                             </button>
                         </h2>
@@ -79,14 +81,14 @@
 
                                 </div>
                                 <div class="d-flex flex-row align-items-center menu-options">
-                                    <span>Alarma:&nbsp;&nbsp;</span>
+                                    <span id="menu-alarma">Alarma:&nbsp;&nbsp;</span>
                                     <i id="alarmVolumeIcon" class="bi bi-volume-down-fill tictacStyle"></i>
                                     <input id="alarmVolumeSlider" class="mx-2" type="range" min="0" max="10" step="1"
                                         value="2" oninput="changeAlarmVolume(this.value)">
                                     <span id="alarmValue" class="mx-2">2</span>
                                 </div>
                                 <div class="d-flex flex-row align-items-center menu-options">
-                                    <span>Fondo:&nbsp;&nbsp;&nbsp;</span>
+                                    <span id="menu-bg">Fondo:&nbsp;&nbsp;&nbsp;</span>
                                     <i id="fondoVolumeIcon" class="bi bi-volume-mute-fill tictacStyle"></i>
                                     <input id="fondoVolumeSlider" class="mx-2" type="range" min="0" max="10" step="1"
                                         value="0" oninput="changeFondoVolume(this.value)">
@@ -100,8 +102,9 @@
                     </div>
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingThree">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            <button id="menu-sounds" class="accordion-button collapsed" type="button"
+                                data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false"
+                                aria-controls="collapseThree">
                                 Sonidos
                             </button>
                         </h2>
@@ -110,16 +113,45 @@
                             data-bs-parent="#accordionLateralMenu">
                             <div class="accordion-body">
                                 <div class="form-check">
-                                    <input id="alarma1" class="form-check-input" type="radio" name="flexRadioDefault"
+                                    <input id="alarma1" class="form-check-input" type="radio" name="flexRadioDefault1"
                                         checked>
-                                    <label class="form-check-label" for="alarma1">
+                                    <label id="menu-soft-alarm" class="form-check-label" for="alarma1">
                                         Alarma Suave
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input id="alarma2" class="form-check-input" type="radio" name="flexRadioDefault">
-                                    <label class="form-check-label" for="alarma2">
+                                    <input id="alarma2" class="form-check-input" type="radio" name="flexRadioDefault2">
+                                    <label id="menu-bell-alarm" class="form-check-label" for="alarma2">
                                         Alarma Campana
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingFour">
+                            <button id="menu-language" class="accordion-button collapsed" type="button"
+                                data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false"
+                                aria-controls="collapseFour">
+                                Lenguaje
+                            </button>
+                        </h2>
+                        <div class="mb-2 mt-0" style="width: 100%;  border: 1px solid #a0906f; "></div>
+                        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                            data-bs-parent="#accordionLateralMenu">
+                            <div class="accordion-body">
+                                <div class="form-check">
+                                    <input id="spanishLanguage" class="form-check-input" type="radio"
+                                        name="flexRadioDefault" checked>
+                                    <label id="menu-spanish" class="form-check-label" for="spanishLanguage">
+                                        Español
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input id="englishLanguage" class="form-check-input" type="radio"
+                                        name="flexRadioDefault">
+                                    <label id="menu-english" class="form-check-label" for="englishLanguage">
+                                        Inglés
                                     </label>
                                 </div>
                             </div>
@@ -152,7 +184,7 @@
         </div>
         <section class="row">
             <div class="col-12 fondoCrono">
-                <h2 id="estadoCrono">Estado: </h2>
+                <h2 id="chronometerState">Estado: </h2>
                 <div id="crono">
                     <div class="contador" id="minutos">00</div>
                     <div class="contador" id="dosPuntosContador">:</div>
@@ -221,11 +253,11 @@
                     </div> -->
                     <div class="col-12 col-sm-6">
                         <a id="btnSobre" title="BorealOS Web" target="_blank" alt="BorealOS Web"
-                            href="http://www.borealos.com">BorealOS 2017</a>
+                            href="http://www.borealos.com">Borealos 2021</a>
                     </div>
 
                     <div class="col-12 col-sm-6">
-                        <span>Hora actual:</span>
+                        <span id="current-time">Hora actual:</span>
                         <span id="reloj"></span>
                     </div>
                 </div>
@@ -238,6 +270,7 @@
         integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
         crossorigin="anonymous"></script>
     <script src="js/js_timer2.js"></script>
+    <script src="Language/language.js"></script>
 </body>
 
 </html>

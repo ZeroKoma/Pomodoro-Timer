@@ -74,7 +74,7 @@ body {
   display: flex;
 }
 
-#estadoCrono {
+#chronometerState {
   margin: 0;
   font-size: 21px;
 }
@@ -258,7 +258,7 @@ body {
   background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%23a0906f" class="bi bi-caret-down-fill" viewBox="0 0 16 16"><path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></svg>') !important;
 }
 .accordion-item {
-  border: none;
+  border: none !important;
 }
 .accordion-button {
   padding: 0.5rem 0rem !important;
@@ -447,7 +447,7 @@ input[type="range"]::-ms-thumb {
   .contador {
     font-size: 60px;
   }
-  #estadoCrono {
+  #chronometerState {
     font-size: 16px;
   }
   .tomatoImg {
